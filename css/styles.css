@@ -1,0 +1,6 @@
+.vertical-center{
+    position: relative;
+    top: 100%;
+    transform: translateY(50%); 
+
+}
