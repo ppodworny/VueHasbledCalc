@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Vue Project 1</title>
+		<title>Vue HAS-BLED Calculator</title>
 		<script src="./js/vue.js"></script>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/toggle-sliders.css" rel="stylesheet">
@@ -8,63 +8,72 @@
 	</head>
 	<body>
 	<div id="app" class="container">
-		<div >
-			<div>
-				<h1>{{title}}</h1>
+		<div>
+			<div class="col-sm-9 text-center" id="title">
+				{{title}}
 			</div>
 			<div>
-			<div class="row">
-			<div class="container">
-				<div class="col-sm-5">
-				<div v-for="parameter in parameters">
-
+				<div class="row">
 					<div class="container">
-					<div class="row">
-					<div class="col-sm-3">
-					<h4>
-						{{parameter.name}}
-					</h4>
-					<h6>
-						{{parameter.text}}
-					</h6>
-					</div>
-					<div class="col-sm-2 ">
-					<div class="row">
-					<div class=" vertical-center">
-					<label class="switch">
-					<input type="checkbox" v-model="parameter.checked">  <div class="slider round"></div>
-					</label>
-					</div>
-					</div>
-					</div>
-					</div>
-					</div>
-					</div>
-				</div>
-				<div id="result-box" class="col-sm-4 round">
-					<div>
-					<h4> Hasbled score is: {{hasbledScore}}</h2>
-					</div>
-					<div>
-					{{showResult}}
-					</div>
-				</div>
-			</div>
-			</div>
+						<div class="col-sm-5">
+						<div v-for="parameter in parameters">
 
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-3">
+										<h4>
+											{{parameter.name}}
+										</h4>
+										<h6>
+											{{parameter.text}}
+										</h6>
+									</div>
+									<div class="col-sm-2 ">
+										<div class="row">
+											<div class=" vertical-center">
+											<label class="switch">
+											<input type="checkbox" v-model="parameter.checked">  <div class="slider round"></div>
+											</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> <!-- END OF v-for loop -->
+						</div>
+						<div class="col-sm-4">
+							<div class="row">
+								<div id="result-box" class="round">
+									<div>
+									<h4> HAS-BLED score: {{hasbledScore}}</h4>
+									</div>
+									<div>
+									{{showResult}}
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div id="legend" class="round">
+									{{legend}}
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
 			</div>
-		</div> <!-- END OF col-sm-6 -->
+		</div>
 	</div>	<!-- END OF CONTAINER -->
 		
 		<script>
 			new Vue({
 				el: '#app',
 				data:{
-					title: "Hasbled score calculator", 
+					title: "HAS-BLED score calculator", 
 					score: 0,
 					result: ["Anticoagulation should be considerd. Patient has a low risk for major bleeding.",
 					"Anticoagulation can be considerd, however patient has a moderate risk for major bleeding.", 
 					"Anticoagulation should be avoided. Patient has a high risk for major bleeding."],
+					legend: "SBP - systolic blood pressure, Cr - creatinine, AST - asparagine transferase, ALT - alanine transferase, AP - alkaline phosphatase, NSAIDs - non steroid anti inflamatory drugs. Reference: Pisters, Ron; Lane, D. A.; Nieuwlaat, R; De Vos, C. B.; Crijns, H. J.; Lip, G. Y. (2010). 'A Novel User-Friendly Score (HAS-BLED) to Assess 1-Year Risk of Major Bleeding in Patients with Atrial Fibrillation.' CHEST Journal. Not for medical use. Author is not responsible for damage caused by use of this calculator.", 
 					parameters:  [
 						{name: "Hypertension", text: 'SBP > 160mmHg', checked: false},
 						{name: 'Abnormal renal function', text: 'Dialysis, transplant, Cr>2.26mg/dL or >200umol/L', checked: false},
