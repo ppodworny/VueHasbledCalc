@@ -41,7 +41,7 @@
 					</div>
 					</div>
 				</div>
-				<div class="col-sm-4">
+				<div id="result-box" class="col-sm-4 round">
 					<div>
 					<h4> Hasbled score is: {{hasbledScore}}</h2>
 					</div>
@@ -95,14 +95,15 @@
 						showResult: function()
 							{
 								if (this.score < 2){
+									document.getElementById("result-box").style.backgroundColor = "green";
 									return this.result[0];
 									}
 								else if (this.score == 2)
-									{
+									{ document.getElementById("result-box").style.backgroundColor = "orange";
 										return this.result[1];
 									}
 								else
-								 {
+								 { document.getElementById("result-box").style.backgroundColor = "red";
 								 	return this.result[2];
 								}
 							}

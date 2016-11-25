@@ -4,3 +4,12 @@
     transform: translateY(50%); 
 
 }
+.round{
+	border-radius: 10px
+}
+#result-box {
+	background-color: green;
+	padding-bottom: 10px;
+	color: black;
+
+}
